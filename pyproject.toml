@@ -1,0 +1,10 @@
+[project]
+name = "kecc"
+version = "0.0.0"
+requires-python = ">=3.11"
+
+[dependency-groups]
+dev = [
+    "mdformat>=1.0.0",
+    "pre-commit",
+]
