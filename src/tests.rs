@@ -85,7 +85,18 @@ pub fn test_write_c(path: &Path) {
     let temp_file_path = temp_dir.path().join("temp.c");
     let mut temp_file = File::create(&temp_file_path).unwrap();
 
+    // Print the temp file path
+
     write(&unit, &mut temp_file).unwrap();
+
+    // For debugging
+    // NOTE: Copy the temp files to see what was written.
+    let debug_dir = Path::new("generated").join("test_write_c");
+    fs::create_dir_all(&debug_dir).unwrap();
+    let debug_input_path = debug_dir.join("input.c");
+    let _bytes_copied = fs::copy(&path, &debug_input_path).unwrap();
+    let debug_output_path = debug_dir.join("output.c");
+    let _bytes_copied = fs::copy(&temp_file_path, &debug_output_path).unwrap();
 
     let new_unit = Parse
         .translate(&temp_file_path.as_path())
