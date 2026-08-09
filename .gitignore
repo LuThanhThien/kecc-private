@@ -4,3 +4,5 @@ rustfmt.toml
 **/*.rs.bk
 csmith
 uv.lock
+Cargo.lock
+generated
